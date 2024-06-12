@@ -16,7 +16,7 @@ while True:
             database='world',
             auth_plugin='mysql_native_password'
         )
-        print("Успешно подключено к базе данных")
+        print("Успешное подключение к базе данных")
         conn.close()
         break
     except mysql.connector.Error as e:
