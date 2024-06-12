@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  pytest:
+    image: int1_pytest
+    build:
+        context: ./int1_python
+    tty: true
+    environment:
+      MYSQL_USER: PT_student
+      MYSQL_PASSWORD: PT_password
+    container_name: pytest_container
+  
+  mysql:
+    image: int1_mysql
+    build:
+      context: ./int1_db
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_USER: PT_student
+      MYSQL_PASSWORD: PT_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    container_name: mysql_container
+
+volumes:
+  mysql_data:
